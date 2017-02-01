@@ -1,0 +1,215 @@
+
+    <head>
+        <title>GDB and other cool command line stuff</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/main.css?v=c2b76ed99e">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <title>GDB and other cool command line stuff</title>
+        <link rel="canonical" href="index.html">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Matt's Stuff">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GDB and other cool command line stuff">
+    <meta property="og:description" content="If you hold the linux shell to your ear, can you hear the C?">
+    <meta property="og:url" content="https://blog.mbell.me/gdb-and-other-cool-command-line-stuff/">
+    <meta property="og:image" content="https://blog.mbell.me/content/images/2016/06/c.JPG">
+    <meta property="article:published_time" content="2015-10-30T12:05:39.000Z">
+    <meta property="article:modified_time" content="2016-06-13T14:57:51.947Z">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Posix">
+    <meta property="article:tag" content="Cs">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GDB and other cool command line stuff">
+    <meta name="twitter:description" content="If you hold the linux shell to your ear, can you hear the C?">
+    <meta name="twitter:url" content="https://blog.mbell.me/gdb-and-other-cool-command-line-stuff/">
+    <meta name="twitter:image:src" content="https://blog.mbell.me/content/images/2016/06/c.JPG">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Matthew Bell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Linux, Posix, Cs">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Matt&#x27;s Stuff",
+        "logo": "https://blog.mbell.me/content/images/2016/03/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Matthew Bell",
+        "image": "https://blog.mbell.me/content/images/2016/06/irlface.png",
+        "url": "https://blog.mbell.me/author/matthew/",
+        "sameAs": [],
+        "description": "Hey there, I&#x27;m Matt."
+    },
+    "headline": "GDB and other cool command line stuff",
+    "url": "https://blog.mbell.me/gdb-and-other-cool-command-line-stuff/",
+    "datePublished": "2015-10-30T12:05:39.000Z",
+    "dateModified": "2016-06-13T14:57:51.947Z",
+    "image": "https://blog.mbell.me/content/images/2016/06/c.JPG",
+    "keywords": "Linux, Posix, Cs",
+    "description": "If you hold the linux shell to your ear, can you hear the C?"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.8">
+    <link rel="alternate" type="application/rss+xml" title="Matt's Stuff" href="../rss/index.html">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78122351-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </head>
+    <body>
+        <div id="menu-button"><i class="fa fa-navicon"></i></div>
+<nav>
+        <a href="../">Home</a>
+        <a href="../ghost">Dashboard</a>
+        <a href="https://mbell.me/">Back to homepage</a>
+</nav>
+
+
+            <header class="post-header" data-img="/content/images/2016/06/c.JPG">
+        <div><h1>GDB and other cool command line stuff</h1></div>
+        <div><h2>Posted on <time class="post-date" datetime="2015-10-30">
+                30 October 2015
+                </time></h2></div>
+        <div><h2><i class="fa fa-comments"></i> <a href="index.html#disqus_thread"> Comments</a></h2></div>
+    </header>
+
+    <div id="main">
+        <section class="post-content">
+            <p>In this post, Iâll be explaining how to use GDB to debug your programs when things donât go so well; and Iâll also go through a couple of other neat tools you can use to enhance your command line experience.</p>
+
+<!-- more -->
+
+<h2>GDB</h2>
+
+<p>Have you ever ran a program, just to find that your program exits with the message, <code>segmentation fault</code>? Do your programs run and return a value, but not the value you were looking for? GDB is a tool that you can use to remove issues, or to âdebugâ your program so that it runs properly.</p>
+
+<p>GDB is already installed on UCL CS computers, and youâll probably find it easily for your Linux distribution or Mac OS installation. When compiling, make sure that you include the <code>-g</code> option (e.g. <code>gcc -g myprogram.c</code>). Then, you run GDB with the command <code>gdb</code>, where â is your executable file. Youâll then see some text and then a command prompt like so:</p>
+
+<pre><code>(gdb) 
+</code></pre>
+
+<p>For a comprehensive list of what you can do from here, you can type <code>help</code>. Otherwise, here is a list of common commands you can use:</p>
+
+<p></p><ul><li><code>r</code> or <code>run</code>: run the program, optionally with any command line parameters.</li> <br>
+<li><code>break</code>: add a <i>breakpoint</i> at the specified line. What is a breakpoint, you ask? A breakpoint will pause the running of the program at that point, letting you delve into whatâs going on.</li> <br>
+<li><code>c</code> or <code>continue</code>: Continues (un-pauses) the running of the program.</li> <br>
+<li><code>k</code> or <code>kill</code>: Terminate the program.</li> <br>
+<li><code>print</code>: print the result of expression. This lets you see the values of variables or just about anything.</li> <br>
+<li><code>q</code> or <code>quit</code>: quit gdb.</li> <br>
+</ul><p>Have fun with this, itâs pretty neat to learn and use!</p>
+
+<h2>Command line tools you may not know about</h2>
+
+<h2>wc</h2>
+
+<p><code>wc</code> will count newline, word and byte counts of the input you provide it with. <code>wc</code> accepts standard input (e.g., piped output from another program), or you can give it a filename as an option and itâll use that instead. Also you can use <code>-c</code>, <code>-m</code>, <code>-l</code> to show only byte, character or line counts respectively.</p>
+
+<h2>man</h2>
+
+<p><code>man</code> = manual. You can read manual pages for pretty much anything, using <code>man</code>. Many people will tell you to ‘RTFMâ, which simply means, “Read The Fine Man pageâ.</p>
+
+<h2>grep</h2>
+
+<p><code>grep</code> is a tool you can use to filter input using a pattern, which is, more often than not, a regular expression. Use the man page (<code>man grep</code>) to find out about the wide range of things you can do with it. Here is an example:</p>
+
+<pre><code>$ grep 'Grape' fruits
+Grape
+Grapefruit
+</code></pre>
+
+<h2>htop</h2>
+
+<p><code>htop</code> is a program that lets you view system processes in the terminal window. You can press either 'qâ or 'F10â to exit.</p>
+
+<h2>time</h2>
+
+<p>If you like competing with others, you can use <code>time</code> to time how quickly your program runs.</p>
+
+<h2>vim</h2>
+
+<p>A fantastic text editor.</p>
+        </section>
+        <section>
+            <div class="flex-container">
+                <div class="halfsies">
+                        <h2><i class="fa fa-user"></i> By <a href="../author/matthew/">Matthew Bell</a></h2>
+                        <p>Hey there, I'm Matt.</p>
+                </div>
+                <div class="halfsies">
+                    <h2><i class="fa fa-share-alt"></i> Share</h2>
+                    <p><i class="fa fa-twitter"></i> <a href="https://twitter.com/intent/tweet?text=GDB%20and%20other%20cool%20command%20line%20stuff&amp;url=https://blog.mbell.me/gdb-and-other-cool-command-line-stuff/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"> Twitter</a></p>
+                    <p><i class="fa fa-facebook"></i> <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.mbell.me/gdb-and-other-cool-command-line-stuff/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">Facebook</a></p>
+                    <p><i class="fa fa-link"></i> <a href="index.html">Permalink</a></p>
+                </div>
+            </div>
+            <div class="tagbox">
+                    <h2><i class="fa fa-tags"></i> Tags: </h2>
+                    <span>
+                            <a class="button" href="../tag/linux/"><i class="fa fa-tag"></i> Linux</a>
+                            <a class="button" href="../tag/posix/"><i class="fa fa-tag"></i> Posix</a>
+                            <a class="button" href="../tag/cs/"><i class="fa fa-tag"></i> Cs</a>
+                    </span>
+            </div>
+        </section>
+        <aside class="flex-container">
+                <div class="halfsies">
+                    <h4>Up next:</h4>
+                    <h2><a href="../whack-a-mole-pseudocode/">"Whack-A-Mole" Pseudocode</a></h2>
+                    <p><em></em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+                <div class="halfsies">
+                    <h4>Previously:</h4>
+                    <h2><a href="../c-guide-part-3-structures-and-pointers/">C Guide Part 3/? - Structures and Pointers</a></h2>
+                    <p><em>Knowing how to use pointers and structures is a requirement to doing meaningful things in C.</em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+        </aside>
+        <aside>
+            <h4>Comments</h4>
+            <div id="disqus_thread"></div>
+            <script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+ */
+            var disqus_config = function () {
+                this.page.url = ""; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = "3"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+
+    s.src = '//matthewb.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </aside>
+    </div>
+
+
+        <script type="text/javascript" src="../assets/js/main.js?v=c2b76ed99e"></script>
+
+        <script id="dsq-count-scr" src="https://matthewb.disqus.com/count.js" async></script>
+        
+</body>

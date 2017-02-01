@@ -1,0 +1,531 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,300italic,700,700italic|Merriweather:400,700,700italic,400italic|Source+Code+Pro|Raleway:300);
+p {
+  line-height: 1.5rem;
+  font-size: 1.3rem; }
+
+a {
+  line-height: 1.5rem;
+  font-size: 1.1rem; }
+
+strong {
+  font-weight: 700; }
+
+em {
+  font-style: italic; }
+
+#main a:not(.button), main a:visited:not(.button) {
+  background-color: transparent;
+  color: inherit;
+  border-bottom: solid 2px #2c3e50;
+  text-decoration: none;
+  transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+  font-weight: 700;
+  padding: 2px;
+  margin-bottom: 0.1rem; }
+  #main a:not(.button):hover, main a:visited:not(.button):hover {
+    color: #ecf0f1;
+    background-color: #16a085; }
+
+h1, h2, h3, h4 {
+  margin: 0.25rem 0;
+  padding: 0.1rem;
+  line-height: 2rem; }
+  h1.light-header, h2.light-header, h3.light-header, h4.light-header {
+    color: #bdc3c7; }
+
+h1, h2 {
+  font-family: "Raleway", "Helvetica Neue", sans-serif; }
+
+h4 {
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+
+*:focus {
+  outline: none; }
+
+::selection {
+  background: #1abc9c; }
+
+::-webkit-input-placeholder {
+  color: #bdc3c7; }
+
+html {
+  font-family: "Josefin Sans", "Noto Sans", sans-serif;
+  color: #2c3e50;
+  background-color: #2c3e50;
+  overflow-x: hidden;
+  font-weight: 400;
+  font-style: none;
+  min-width: 100%;
+  height: 100%; }
+
+body {
+  min-height: 100%;
+  height: 100%;
+  position: relative; }
+
+nav {
+  position: fixed;
+  height: 100%;
+  background-color: #16a085;
+  transition: left 0.25s ease-in-out; }
+  @media only screen and (min-width: 1024px) {
+    nav {
+      left: -22rem;
+      width: 22rem; } }
+  @media only screen and (min-width: 651px) and (max-width: 1024px) {
+    nav {
+      left: -20rem;
+      width: 20rem; } }
+  @media only screen and (max-width: 650px) {
+    nav {
+      left: -15rem;
+      width: 15rem; } }
+  nav.nav-active {
+    left: 0 !important; }
+  nav a, nav input[type="text"] {
+    display: block;
+    width: calc(100% - 1rem);
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ecf0f1;
+    text-decoration: none;
+    background-color: #16a085;
+    transition: background-color 0.2s linear; }
+    nav a:hover, nav input[type="text"]:hover {
+      background-color: rgba(0, 0, 0, 0.3); }
+  nav input[type="text"] {
+    border-style: solid;
+    border-width: 0 0 2px 0; }
+
+#menu-button {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  padding: 0.5rem;
+  line-height: 3rem;
+  vertical-align: middle;
+  text-align: center;
+  width: 3rem;
+  height: 3rem;
+  color: #ecf0f1;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out, left 0.25s ease-in-out; }
+  #menu-button:hover {
+    cursor: pointer;
+    color: #34495e;
+    background-color: rgba(255, 255, 255, 0.3); }
+
+header {
+  overflow: hidden;
+  height: 4rem;
+  position: relative;
+  transition: left 0.25s ease-in-out;
+  left: 0;
+  color: #ecf0f1;
+  background-color: #2c3e50; }
+  header:not(.hero-header):not(.post-header) {
+    padding-left: 5rem; }
+    header:not(.hero-header):not(.post-header) h1 {
+      font-size: 2rem;
+      height: 100%;
+      line-height: 3rem; }
+  header.hero-header, header.post-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ecf0f1;
+    background-color: #2c3e50;
+    height: 100%;
+    float: none; }
+    header.hero-header:before, header.post-header:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.2;
+      background-image: url(attr(data-img));
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed; }
+    header.hero-header h1, header.post-header h1 {
+      font-size: 3rem;
+      line-height: 3rem; }
+      @media only screen and (min-width: 1024px) {
+        header.hero-header h1, header.post-header h1 {
+          font-size: 5rem;
+          line-height: 5rem; } }
+    @media only screen and (min-width: 1024px) {
+      header.hero-header h3, header.post-header h3 {
+        font-size: 2rem; } }
+  header.post-header {
+    align-items: baseline;
+    height: 75%; }
+    header.post-header > div {
+      float: none;
+      margin: 0 10px;
+      text-align: left; }
+      @media only screen and (min-width: 651px) {
+        header.post-header > div {
+          margin-left: 25%;
+          max-width: 50%; } }
+      header.post-header > div > *:not(style) {
+        background-color: #16a085;
+        display: inline;
+        box-shadow: 10px 0 0 #16a085, -10px 0 0 #16a085;
+        float: none;
+        padding: 5px 0; }
+      header.post-header > div.img {
+        height: 5rem;
+        width: 5rem; }
+        header.post-header > div.img img {
+          box-shadow: none;
+          padding: 0;
+          margin-left: -10px; }
+    header.post-header time, header.post-header a, header.post-header i {
+      float: initial;
+      margin: 0 !important;
+      line-height: calc(2rem + 10px); }
+    header.post-header h1 {
+      font-size: 3rem;
+      line-height: calc(3.5rem + 10px); }
+      header.post-header h1 i {
+        font-size: 3rem;
+        line-height: 3rem;
+        margin-right: 0.5rem; }
+    header.post-header:before {
+      opacity: 0.4; }
+    header.post-header .author-bio {
+      margin-top: 2rem; }
+  header * {
+    float: left; }
+  header * {
+    font-family: "Raleway", "Helvetica Neue", sans-serif;
+    z-index: 2;
+    text-align: center;
+    color: #ecf0f1; }
+  header .social-media {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-left: 5px;
+    text-decoration: none;
+    background: none;
+    padding: 5px; }
+    @media only screen and (min-width: 1024px) {
+      header .social-media {
+        font-size: 3rem;
+        line-height: 3rem; } }
+    header .social-media i {
+      vertical-align: middle; }
+  header .social-media:after {
+    content: attr(data-tooltip);
+    font-size: 2rem;
+    display: inline-block;
+    margin-left: 5px;
+    width: 0;
+    height: 3rem;
+    vertical-align: middle;
+    font-family: "Josefin Sans", "Noto Sans", sans-serif;
+    transition: width 0.5s ease-in-out;
+    overflow: hidden; }
+  header .social-media:hover {
+    background: rgba(236, 240, 241, 0.3);
+    color: #34495e;
+    transition: background 0.5s ease-in-out; }
+    header .social-media:hover i {
+      color: #34495e; }
+  header .social-media:hover:after {
+    width: 250px; }
+  header i#header-down-button {
+    font-size: 2em;
+    margin-top: 0.5em;
+    cursor: pointer; }
+
+@media only screen and (min-width: 1024px) {
+  .header-active {
+    left: 22rem !important; } }
+@media only screen and (min-width: 651px) and (max-width: 1024px) {
+  .header-active {
+    left: 20rem !important; } }
+@media only screen and (max-width: 650px) {
+  .header-active {
+    left: 15rem !important; } }
+
+#main {
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  transition: left 0.25s ease-in-out; }
+  #main .flex-container {
+    display: block; }
+    @media only screen and (min-width: 651px) {
+      #main .flex-container {
+        display: flex; } }
+    #main .flex-container div {
+      width: 100%; }
+    #main .flex-container a {
+      font-size: inherit; }
+  #main section, #main aside {
+    width: 90%;
+    position: relative;
+    background-color: #ecf0f1;
+    padding: 2em 5%; }
+    @media only screen and (min-width: 651px) and (max-width: 1024px) {
+      #main section, #main aside {
+        width: 80%;
+        padding: 1em 10%; } }
+    @media only screen and (min-width: 1024px) {
+      #main section, #main aside {
+        width: 50%;
+        padding: 1em 25%; } }
+    #main section.flexo, #main aside.flexo {
+      display: flex;
+      flex-direction: column; }
+      @media only screen and (min-width: 1024px) {
+        #main section.flexo, #main aside.flexo {
+          flex-direction: row-reverse; } }
+    #main section:nth-of-type(2n) ::selection, #main aside:nth-of-type(2n) ::selection {
+      background-color: #2c3e50; }
+    #main section:nth-of-type(2n+1), #main aside:nth-of-type(2n+1) {
+      background-color: #ecf0f1;
+      color: #2c3e50; }
+      #main section:nth-of-type(2n+1) .button, #main aside:nth-of-type(2n+1) .button, #main section:nth-of-type(2n+1) input[type="submit"], #main aside:nth-of-type(2n+1) input[type="submit"], #main section:nth-of-type(2n+1) button, #main aside:nth-of-type(2n+1) button {
+        color: #2c3e50;
+        border-color: #2c3e50;
+        font-family: "Josefin Sans", "Noto Sans", sans-serif; }
+        #main section:nth-of-type(2n+1) .button:hover, #main aside:nth-of-type(2n+1) .button:hover, #main section:nth-of-type(2n+1) input[type="submit"]:hover, #main aside:nth-of-type(2n+1) input[type="submit"]:hover, #main section:nth-of-type(2n+1) button:hover, #main aside:nth-of-type(2n+1) button:hover {
+          background-color: #2c3e50;
+          color: #ecf0f1; }
+        #main section:nth-of-type(2n+1) .button:active, #main aside:nth-of-type(2n+1) .button:active, #main section:nth-of-type(2n+1) input[type="submit"]:active, #main aside:nth-of-type(2n+1) input[type="submit"]:active, #main section:nth-of-type(2n+1) button:active, #main aside:nth-of-type(2n+1) button:active {
+          background-color: rgba(0, 0, 0, 0.4); }
+      #main section:nth-of-type(2n+1) a:not(.button), #main aside:nth-of-type(2n+1) a:not(.button) {
+        border-color: inherit; }
+        #main section:nth-of-type(2n+1) a:not(.button):hover, #main aside:nth-of-type(2n+1) a:not(.button):hover {
+          color: #ecf0f1;
+          border-color: #ecf0f1;
+          background-color: #34495e; }
+    #main section:nth-of-type(2n+2), #main aside:nth-of-type(2n+2) {
+      background-color: #1abc9c !important;
+      color: #ecf0f1; }
+      #main section:nth-of-type(2n+2) a:not(.button), #main aside:nth-of-type(2n+2) a:not(.button) {
+        border-color: inherit; }
+        #main section:nth-of-type(2n+2) a:not(.button):hover, #main aside:nth-of-type(2n+2) a:not(.button):hover {
+          color: #16a085;
+          border-color: #16a085;
+          background-color: #ecf0f1; }
+    #main section img, #main aside img {
+      width: 100%; }
+    #main section .flex-projects, #main aside .flex-projects {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%; }
+      #main section .flex-projects div, #main aside .flex-projects div {
+        width: calc(100% - 1rem);
+        padding: 0.5rem;
+        position: relative;
+        padding-bottom: 4rem; }
+        @media only screen and (min-width: 1024px) {
+          #main section .flex-projects div, #main aside .flex-projects div {
+            width: calc((100% / 3) - 1rem); } }
+        #main section .flex-projects div img, #main aside .flex-projects div img {
+          width: 100%; }
+        #main section .flex-projects div .button, #main aside .flex-projects div .button, #main section .flex-projects div input[type="submit"], #main aside .flex-projects div input[type="submit"] {
+          width: calc(100% - 3rem);
+          position: absolute;
+          bottom: 0; }
+          @media only screen and (min-width: 1024px) {
+            #main section .flex-projects div .button, #main aside .flex-projects div .button, #main section .flex-projects div input[type="submit"], #main aside .flex-projects div input[type="submit"] {
+              width: auto; } }
+
+article.index {
+  border-bottom: 1px solid #bdc3c7; }
+  article.index h1 a {
+    font-size: 2rem;
+    line-height: 2.75rem; }
+  article.index p {
+    margin: 0.5rem 0; }
+
+.post-content {
+  font-family: "Merriweather", serif; }
+  .post-content p, .post-content code, .post-content i, .post-content em, .post-content strong {
+    font-size: 1rem; }
+  .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5 {
+    font-family: "Raleway", "Helvetica Neue", sans-serif;
+    font-size: 2rem; }
+  .post-content code {
+    font-family: "Source Code Pro", monospace; }
+  .post-content pre {
+    border: 1px solid #bdc3c7;
+    padding: 5px; }
+  .post-content img {
+    border: 1px solid #1abc9c;
+    display: block !important; }
+  .post-content .img-caption {
+    background-color: #1abc9c;
+    color: #ecf0f1;
+    margin: 0;
+    display: block;
+    width: 100%;
+    width: calc(100% + 2px);
+    box-sizing: border-box;
+    padding: 5px;
+    font-style: italic; }
+  .post-content input {
+    font-family: "Source Code Pro", monospace;
+    border-color: #34495e;
+    border-style: solid;
+    transition: border-color 0.25s ease-in-out;
+    padding: 5px; }
+    .post-content input:focus {
+      border-color: #16a085; }
+  .post-content blockquote {
+    border-left: 5px solid #1abc9c;
+    padding-left: 5px; }
+
+.pagination * {
+  text-align: center; }
+
+.run-giving-overview h3 {
+  font-size: 1.5rem; }
+.run-giving-overview h1 {
+  font-size: 5rem; }
+
+footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: left 0.25s ease-in-out;
+  height: 5rem;
+  overflow: hidden; }
+  footer * {
+    text-align: center; }
+
+.button, input[type="submit"], button {
+  background: none;
+  border-width: 2px;
+  border-color: #ecf0f1;
+  border-style: solid;
+  min-height: 2rem;
+  display: block;
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  color: #ecf0f1;
+  line-height: 2rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  transition: background 0.25s ease-in-out,color 0.25s ease-in-out;
+  border-radius: 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  .button .fa, input[type="submit"] .fa, button .fa {
+    letter-spacing: 0; }
+  .button:hover, input[type="submit"]:hover, button:hover {
+    background: #ecf0f1;
+    color: #1abc9c; }
+  .button:active, input[type="submit"]:active, button:active {
+    background: rgba(0, 0, 0, 0.2); }
+  @media only screen and (min-width: 651px) and (max-width: 1024px) {
+    .button, input[type="submit"], button {
+      display: inline-block;
+      margin: 0.5rem auto; } }
+  @media only screen and (min-width: 1024px) {
+    .button, input[type="submit"], button {
+      display: inline-block;
+      margin: 0.5rem auto; }
+      .button:not(:nth-of-type(1)), input[type="submit"]:not(:nth-of-type(1)), button:not(:nth-of-type(1)) {
+        margin: 0.5rem 0 0.5rem 0.5rem; } }
+
+.form p {
+  width: 100%; }
+  .form p label {
+    width: 50%;
+    float: left;
+    display: block; }
+  .form p input, .form p textarea {
+    width: 100%;
+    display: block;
+    background: none;
+    border: 2px solid; }
+  .form p textarea {
+    min-height: 5rem; }
+
+.disabled, :disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5; }
+
+.hidden {
+  display: none; }
+
+.np-div {
+  min-height: 10rem; }
+  .np-div .np-img {
+    margin-right: 0.5rem;
+    border: 2px solid; }
+    @media only screen and (min-width: 651px) {
+      .np-div .np-img {
+        width: auto !important;
+        float: left;
+        height: 10rem;
+        width: 10rem; } }
+
+.notification-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 4rem;
+  z-index: 4;
+  background: #2c3e50;
+  transition: background 0.25s ease-in-out;
+  color: #ecf0f1;
+  line-height: 4rem;
+  display: none; }
+  .notification-bar * {
+    line-height: 4rem !important;
+    height: 4rem;
+    display: inline-block;
+    vertical-align: top; }
+  .notification-bar .fa-close {
+    width: 4rem;
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    transition: background 0.25s ease-in-out; }
+    .notification-bar .fa-close:hover {
+      background: rgba(236, 240, 241, 0.3); }
+
+#poly-me {
+  padding-right: 0.5rem; }
+  #poly-me.hiddenPoly > g path {
+    transform-origin: center center;
+    transform: scale(0);
+    transition: opacity 100ms ease-in-out, transform 100ms linear; }
+
+.success {
+  background-color: #27ae60; }
+
+.error {
+  background-color: #c0392b; }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,198 @@
+
+    <head>
+        <title>That NPM Situation</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/main.css?v=c2b76ed99e">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <title>That NPM Situation</title>
+        <link rel="canonical" href="index.html">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Matt's Stuff">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="That NPM Situation">
+    <meta property="og:description" content="For a few hours overnight, there was utter panic in the Node.js community. left-pad, a package that consists of an eleven-line JS file, was unpublished from the Node Package Manager registry. You may think that this is a minor thing, but certain packages depended on left-pad. And certain, very">
+    <meta property="og:url" content="https://blog.mbell.me/that-npm-situation/">
+    <meta property="og:image" content="https://blog.mbell.me/content/images/2016/03/colors.jpg">
+    <meta property="article:published_time" content="2016-03-23T17:03:10.726Z">
+    <meta property="article:modified_time" content="2016-03-23T17:03:10.721Z">
+    <meta property="article:tag" content="node.js">
+    <meta property="article:tag" content="web dev">
+    <meta property="article:tag" content="Drama">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="That NPM Situation">
+    <meta name="twitter:description" content="For a few hours overnight, there was utter panic in the Node.js community. left-pad, a package that consists of an eleven-line JS file, was unpublished from the Node Package Manager registry. You may think that this is a minor thing, but certain packages depended on left-pad. And certain, very">
+    <meta name="twitter:url" content="https://blog.mbell.me/that-npm-situation/">
+    <meta name="twitter:image:src" content="https://blog.mbell.me/content/images/2016/03/colors.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Matthew Bell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="node.js, web dev, Drama">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Matt&#x27;s Stuff",
+        "logo": "https://blog.mbell.me/content/images/2016/03/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Matthew Bell",
+        "image": "https://blog.mbell.me/content/images/2016/06/irlface.png",
+        "url": "https://blog.mbell.me/author/matthew/",
+        "sameAs": [],
+        "description": "Hey there, I&#x27;m Matt."
+    },
+    "headline": "That NPM Situation",
+    "url": "https://blog.mbell.me/that-npm-situation/",
+    "datePublished": "2016-03-23T17:03:10.726Z",
+    "dateModified": "2016-03-23T17:03:10.721Z",
+    "image": "https://blog.mbell.me/content/images/2016/03/colors.jpg",
+    "keywords": "node.js, web dev, Drama",
+    "description": "For a few hours overnight, there was utter panic in the Node.js community. left-pad, a package that consists of an eleven-line JS file, was unpublished from the Node Package Manager registry. You may think that this is a minor thing, but certain packages depended on left-pad. And certain, very"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.8">
+    <link rel="alternate" type="application/rss+xml" title="Matt's Stuff" href="../rss/index.html">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78122351-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </head>
+    <body>
+        <div id="menu-button"><i class="fa fa-navicon"></i></div>
+<nav>
+        <a href="../">Home</a>
+        <a href="../ghost">Dashboard</a>
+        <a href="https://mbell.me/">Back to homepage</a>
+</nav>
+
+
+            <header class="post-header" data-img="/content/images/2016/03/colors.jpg">
+        <div><h1>That NPM Situation</h1></div>
+        <div><h2>Posted on <time class="post-date" datetime="2016-03-23">
+                23 March 2016
+                </time></h2></div>
+        <div><h2><i class="fa fa-comments"></i> <a href="index.html#disqus_thread"> Comments</a></h2></div>
+    </header>
+
+    <div id="main">
+        <section class="post-content">
+            <p>For a few hours overnight, there was utter panic in the Node.js community. <a href="https://www.npmjs.com/package/left-pad">left-pad</a>, a package that consists of an eleven-line JS file, was unpublished from the Node Package Manager registry. You may think that this is a minor thing, but certain packages depended on left-pad. And certain, very popular packages depended on those. The result was broken builds, broken builds <a href="http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/">everywhere</a>.</p>
+
+<p>So this actually brings up a whole bunch of big questions for the JavaScript community. The first of those being, why did the maintainer remove all of their packages from NPM? The chap in question, Azer KoÃ§ulu, wrote a very interesting and thought provoking Medium <a href="https://medium.com/@azerbike/i-ve-just-liberated-my-modules-9045c06be67c#.1huqy7a1m">article</a>, stating that he believes that "NPM is someoneâs private land where corporate is more powerful than the people" due to actions over a copyright claim. He also goes on to say that his code is still available on GitHub and he believes in open source. So really, although he <em>did</em> break a lot of people's projects, you gotta respect his integrity, right? It's something he did in the name of Open Source, and you can't really argue against that (although, I imagine that it wasn't the easiest decision to make).</p>
+
+<p>However, it brings up yet more moral dilemmas for awful tech commentators (both casual, like me, and professional, like not-me). Hours after left-pad was removed, the CTO of NPM, Laurie Voss, stepped in and added left-pad back to the registry himself, in what he described as an 'unprecedented' action.</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hey npm users: left-pad 0.0.3 was unpublished, breaking LOTS of builds. To fix, we are un-un-publishing it at the request of the new owner.</p>— Laurie Voss (@seldo) <a href="https://twitter.com/seldo/status/712414400808755200">March 22, 2016</a></blockquote>  
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>And again, you may count it as a 'wrong' action, but it's deciding between whether to support millions of projects or support one guy. And in this case they went with the former. And in NPM's defence again, left-pad was released under the WTFPL, which reads as:</p>
+
+<blockquote>
+  <p>DO WHAT THE F**K YOU WANT TO PUBLIC LICENSE 
+  Version 2, December 2004
+  Copyright (C) 2004 Sam Hocevar <a href="mailto:sam@hocevar.net">sam@hocevar.net</a></p>
+  
+  <p>Everyone is permitted to copy and distribute verbatim or modified copies of this license document, and changing it is allowed as long as the name is changed.</p>
+  
+  <p>DO WHAT THE F**K YOU WANT TO PUBLIC LICENSE 
+  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</p>
+  
+  <ol>
+  <li>You just DO WHAT THE F**K YOU WANT TO.</li>
+  </ol>
+</blockquote>
+
+<p>So, I guess they can kinda 'do what the f**k' they want to.</p>
+
+<h1 id="therestofthedominosfalllikeahouseofcardscheckmate">...the rest of the dominos fall like a house of cards. Checkmate.</h1>
+
+<p>Another big question we should be looking at is, why should a user removing one package containing eleven lines of code break thousands of projects, builds and other packages? It exploits a huge flaw with NPM that should ideally be addressed. Perhaps rather than code being deleted, it is 'archived' and cannot be viewed on the registry any more, while still being able to be accessed by packages that use it already. Or perhaps the entry should be orphaned, for someone else to take on; since packages have open source licenses, it should easily allow other maintainers to take over.</p>
+
+<p>Or perhaps, the whole model is wrong. Look at Linux distributions; their package managers tend to let you add/remove repositories, or servers where be packages. For instance, Arch Linux has <code>core</code>, <code>extra</code> and <code>community</code> repositories amongst others, but there is no stopping me, a user, from adding the custom <code>infinality</code> repository, which isn't owned by Arch Linux but provides binary files of the infinality font program. <strong>As far as I know</strong> this is not possible with <code>npm</code>, the command line tool for the registry; that you can only choose one registry in the config file. It seems like you need to depend on <em>extra</em> tools to get the ability to use many registries at the same time, for instance <a href="https://strongloop.com/strongblog/switch-between-configure-public-and-private-npm-registry/">StrongLoop</a>. Or at least it's currently something set in the <code>package.json</code> file, something discussed in NPM issue <a href="https://github.com/npm/npm/issues/1401">#1401</a>.</p>
+
+<p>To conclude, there are some <em>very</em> pertinent issues with Node.js and NPM right now, but it seems like that until a truly open source competitor is created (and is adopted to the same level), we need to make steps to make do with what we've got. Comments are very much appreciated below if you have views and/or corrections, and I'm also interested in your views on Twitter too - my username is <a href="https://twitter.com/mbell_gb">@mbell_gb</a>.</p>
+        </section>
+        <section>
+            <div class="flex-container">
+                <div class="halfsies">
+                        <h2><i class="fa fa-user"></i> By <a href="../author/matthew/">Matthew Bell</a></h2>
+                        <p>Hey there, I'm Matt.</p>
+                </div>
+                <div class="halfsies">
+                    <h2><i class="fa fa-share-alt"></i> Share</h2>
+                    <p><i class="fa fa-twitter"></i> <a href="https://twitter.com/intent/tweet?text=That%20NPM%20Situation&amp;url=https://blog.mbell.me/that-npm-situation/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"> Twitter</a></p>
+                    <p><i class="fa fa-facebook"></i> <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.mbell.me/that-npm-situation/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">Facebook</a></p>
+                    <p><i class="fa fa-link"></i> <a href="index.html">Permalink</a></p>
+                </div>
+            </div>
+            <div class="tagbox">
+                    <h2><i class="fa fa-tags"></i> Tags: </h2>
+                    <span>
+                            <a class="button" href="../tag/node-js/"><i class="fa fa-tag"></i> node.js</a>
+                            <a class="button" href="../tag/web-dev/"><i class="fa fa-tag"></i> web dev</a>
+                            <a class="button" href="../tag/drama/"><i class="fa fa-tag"></i> Drama</a>
+                    </span>
+            </div>
+        </section>
+        <aside class="flex-container">
+                <div class="halfsies">
+                    <h4>Up next:</h4>
+                    <h2><a href="../run-matt-run/">Run, Matt, Run!</a></h2>
+                    <p><em>You're all amazing, thank you so much for helping to beat heart disease.</em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+                <div class="halfsies">
+                    <h4>Previously:</h4>
+                    <h2><a href="../i-did-a-stupid/">I Did A Stupid.</a></h2>
+                    <p><em>Sometimes you gotta break a few omelettes to make an egg. Wait, what?</em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+        </aside>
+        <aside>
+            <h4>Comments</h4>
+            <div id="disqus_thread"></div>
+            <script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+ */
+            var disqus_config = function () {
+                this.page.url = ""; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = "26"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+
+    s.src = '//matthewb.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </aside>
+    </div>
+
+
+        <script type="text/javascript" src="../assets/js/main.js?v=c2b76ed99e"></script>
+
+        <script id="dsq-count-scr" src="https://matthewb.disqus.com/count.js" async></script>
+        
+</body>

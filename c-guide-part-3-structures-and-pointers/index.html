@@ -1,0 +1,247 @@
+
+    <head>
+        <title>C Guide Part 3/? - Structures and Pointers</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/main.css?v=c2b76ed99e">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <title>C Guide Part 3/? - Structures and Pointers</title>
+        <link rel="canonical" href="index.html">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Matt's Stuff">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="C Guide Part 3/? - Structures and Pointers">
+    <meta property="og:description" content="Knowing how to use pointers and structures is a requirement to doing meaningful things in C.">
+    <meta property="og:url" content="https://blog.mbell.me/c-guide-part-3-structures-and-pointers/">
+    <meta property="og:image" content="https://36.media.tumblr.com/349bb435297ad1439a19a8dc039eabdb/tumblr_inline_nwl0dzlpiy1s6r60g_540.jpg">
+    <meta property="article:published_time" content="2015-10-20T10:42:25.000Z">
+    <meta property="article:modified_time" content="2016-01-25T19:19:35.185Z">
+    <meta property="article:tag" content="Computer Science">
+    <meta property="article:tag" content="Programming">
+    <meta property="article:tag" content="C Guide">
+    <meta property="article:tag" content="C Programming">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="C Guide Part 3/? - Structures and Pointers">
+    <meta name="twitter:description" content="Knowing how to use pointers and structures is a requirement to doing meaningful things in C.">
+    <meta name="twitter:url" content="https://blog.mbell.me/c-guide-part-3-structures-and-pointers/">
+    <meta name="twitter:image:src" content="https://36.media.tumblr.com/349bb435297ad1439a19a8dc039eabdb/tumblr_inline_nwl0dzlpiy1s6r60g_540.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Matthew Bell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Computer Science, Programming, C Guide, C Programming">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Matt&#x27;s Stuff",
+        "logo": "https://blog.mbell.me/content/images/2016/03/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Matthew Bell",
+        "image": "https://blog.mbell.me/content/images/2016/06/irlface.png",
+        "url": "https://blog.mbell.me/author/matthew/",
+        "sameAs": [],
+        "description": "Hey there, I&#x27;m Matt."
+    },
+    "headline": "C Guide Part 3/? - Structures and Pointers",
+    "url": "https://blog.mbell.me/c-guide-part-3-structures-and-pointers/",
+    "datePublished": "2015-10-20T10:42:25.000Z",
+    "dateModified": "2016-01-25T19:19:35.185Z",
+    "image": "https://36.media.tumblr.com/349bb435297ad1439a19a8dc039eabdb/tumblr_inline_nwl0dzlpiy1s6r60g_540.jpg",
+    "keywords": "Computer Science, Programming, C Guide, C Programming",
+    "description": "Knowing how to use pointers and structures is a requirement to doing meaningful things in C."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.8">
+    <link rel="alternate" type="application/rss+xml" title="Matt's Stuff" href="../rss/index.html">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78122351-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </head>
+    <body>
+        <div id="menu-button"><i class="fa fa-navicon"></i></div>
+<nav>
+        <a href="../">Home</a>
+        <a href="../ghost">Dashboard</a>
+        <a href="https://mbell.me/">Back to homepage</a>
+</nav>
+
+
+            <header class="post-header" data-img="https://36.media.tumblr.com/349bb435297ad1439a19a8dc039eabdb/tumblr_inline_nwl0dzlpiy1s6r60g_540.jpg">
+        <div><h1>C Guide Part 3/? - Structures and Pointers</h1></div>
+        <div><h2>Posted on <time class="post-date" datetime="2015-10-20">
+                20 October 2015
+                </time></h2></div>
+        <div><h2><i class="fa fa-comments"></i> <a href="index.html#disqus_thread"> Comments</a></h2></div>
+    </header>
+
+    <div id="main">
+        <section class="post-content">
+            <p></p><div class="heroImage" data-orig-height="1080" data-orig-width="1913" style="background-image:url('https://36.media.tumblr.com/349bb435297ad1439a19a8dc039eabdb/tumblr_inline_nwl0dzlpiy1s6r60g_540.jpg');"></div><p>Last time, we went through data types and arrays so that you can store your values in the best way possible. Today, Iâll explain a way of grouping lots of values together in something called a âstructureâ, and then a quick explanation of pointers and how they can be helpful.</p>
+
+<!-- more -->
+
+<p>Letâs imagine that youâre writing a program to process coordinates in one way or another. Imagine if you could use a data type that held an ‘xâ coordinate and a 'yâ coordinate. For this, we could use a structure. Letâs see how one would be declared:</p>
+
+<pre><code>struct coord {
+    int x;
+    int y;
+};
+</code></pre>
+
+<p>Letâs break this down a bit. The <code>struct</code> keyword declares the fact that this is a structure, and <code>coord</code> is its name. Then, inside the moustache braces, you can include your variables. You can even use arrays and pointers (read on to learn about these). To declare a variable with this type, youâd do something like this:</p>
+
+<pre><code>struct coord myCoord;
+</code></pre>
+
+<p>And then you can access members (the variables that belong to the structure) like so: <code>myCoord.x</code>. However! If youâre using a pointer to the structure, then you must access the members with an arrow: <code>myCoordPtr-&gt;x</code>.</p>
+
+<p>Now, letâs talk about pointers. Imagine that main memory in a computer is split into lots of little blocks which can store data. Each one of these has its own address in memory, that represents where it is found. A bit like an address of a house or building in real life. In C, when you type in the name of a variable (e.g., <code>printf("%i",myNum);</code>) you are <b>not</b> using the variable itself; rather, you are using the <i>value</i> of the variable, the number itself. This is known to programmers as âpassing by valueâ.</p>
+
+<h2>Pointers</h2>
+
+<p>Pointers are a way of storing the memory address of a variable, which means that when you use it, you pass the <i>value</i> of the memory address, and you can use this to access the actual variable and modify it! This is known as 'passing by referenceâ. Letâs look at an example here:</p>
+
+<pre><code>int addNum(int num) {
+    num = num + 2;
+    return 0;
+}
+
+int addNumPtr(int * num) {
+    *num = *num + 2;
+
+    return 0;
+}
+
+int myNum = 4;
+
+addNum(myNum);
+printf("%i \n",myNum); //prints '4'
+
+addNumPtr(&amp;myNum);
+printf("%i \n!,myNum); //prints '6'
+</code></pre>
+
+<p>So, a couple of new symbols used here. To declare a pointer type, you type <code>type * ptrName</code>, where type is the type that youâre going to use. To get the address of a variable, we use the ampersand (<code>&amp;</code>) symbol, as seen on the second to last line above. And the inverse, to get the value of a variable referenced by a pointer, we use the asterisk (<code>*</code>) before the variable.</p>
+
+<p>One more cool trick to know with pointers. Itâs a fantastic coincidence of C that values in an array are actually stored 'nextâ to each other in memory. So if the address of the first value in an array is <code>0458</code>, then the address of the second would be <code>0459</code>! This means that we can use pointers to declare arrays, like so:</p>
+
+<pre><code>#include 
+
+int * intArray;
+int size;
+
+int main() {
+    size = 10;
+    intArray = (int *)calloc(size, sizeof(int));
+
+    *intArray = 10;
+    *(intArray + 1) = 4;
+
+    printf("%i \n", intArray[0]); //prints out 10
+    printf("%i \n", intArray[1]); //prints out 4
+    ...
+</code></pre>
+
+<p>Now, thereâs a lot here to try to take in, so letâs be gentle. We declare the array as a pointer, and we define an arbitrary size. The next part is allocating memory using the <code>calloc()</code> function and assigning the returned pointer to the array pointer.</p>
+
+<p><code>calloc()</code> takes in two parameters - the number of items, or blocks, and the size of these (obtained with the <code>sizeof()</code> function). <code>calloc()</code> then returns a pointer to the start of the assigned memory, so we use something in front of it called a 'castâ (the <code>(int *)</code> bit) to explicitly tell the compiler that weâre dealing with an integer pointer here.</p>
+
+<p>To refer to an item in the array, we use the deference operator, and we can increment the pointer to get the value of the next item (<code>pointer + 1</code>). You must be <b>very</b> careful when doing this kind of thing, because if youâre lazy or donât pay attention, you could be referencing any random data and youâd be getting crazy weird results. Trust me :blush:</p>
+
+<p>Of course, we can also use standard array index referencing (<code>myPtrArray[index]</code>) to access an array item still, so do that if you prefer in this case - you may feel that it looks more readable or easier to understand.</p>
+
+<p>My challenge to you this time is to try to make a linked list using structs and pointers - remember that you can use pointers as a member of a structre, and I should also point out that you can use a void pointer, referred to as <code>* void</code>, to refer to something that doesnât exist. Good luck and let me know how it goes!</p>
+
+<p>Matt</p>
+
+<h2>Sources</h2>
+
+<p><a href="http://www.cprogramming.com/tutorial/lesson7.html">http://www.cprogramming.com/tutorial/lesson7.html</a></p>
+
+<p><a href="http://www.tutorialspoint.com/c_standard_library/c_function_calloc.htm">http://www.tutorialspoint.com/c_standard_library/c_function_calloc.htm</a></p>
+        </section>
+        <section>
+            <div class="flex-container">
+                <div class="halfsies">
+                        <h2><i class="fa fa-user"></i> By <a href="../author/matthew/">Matthew Bell</a></h2>
+                        <p>Hey there, I'm Matt.</p>
+                </div>
+                <div class="halfsies">
+                    <h2><i class="fa fa-share-alt"></i> Share</h2>
+                    <p><i class="fa fa-twitter"></i> <a href="https://twitter.com/intent/tweet?text=C%20Guide%20Part%203%2F%3F%20-%20Structures%20and%20Pointers&amp;url=https://blog.mbell.me/c-guide-part-3-structures-and-pointers/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"> Twitter</a></p>
+                    <p><i class="fa fa-facebook"></i> <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.mbell.me/c-guide-part-3-structures-and-pointers/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">Facebook</a></p>
+                    <p><i class="fa fa-link"></i> <a href="index.html">Permalink</a></p>
+                </div>
+            </div>
+            <div class="tagbox">
+                    <h2><i class="fa fa-tags"></i> Tags: </h2>
+                    <span>
+                            <a class="button" href="../tag/computer-science/"><i class="fa fa-tag"></i> Computer Science</a>
+                            <a class="button" href="../tag/programming/"><i class="fa fa-tag"></i> Programming</a>
+                            <a class="button" href="../tag/c-guide/"><i class="fa fa-tag"></i> C Guide</a>
+                            <a class="button" href="../tag/c-programming/"><i class="fa fa-tag"></i> C Programming</a>
+                    </span>
+            </div>
+        </section>
+        <aside class="flex-container">
+                <div class="halfsies">
+                    <h4>Up next:</h4>
+                    <h2><a href="../gdb-and-other-cool-command-line-stuff/">GDB and other cool command line stuff</a></h2>
+                    <p><em>If you hold the linux shell to your ear, can you hear the C?</em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+                <div class="halfsies">
+                    <h4>Previously:</h4>
+                    <h2><a href="../c-guide-part-2-types-and-functions-and-arrays/">C Guide Part 2/? - Types and Functions and Arrays</a></h2>
+                    <p><em>Time to move onto more fun C things. The stuff on this page will set you up for a wide range of things.</em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+        </aside>
+        <aside>
+            <h4>Comments</h4>
+            <div id="disqus_thread"></div>
+            <script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+ */
+            var disqus_config = function () {
+                this.page.url = ""; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = "4"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+
+    s.src = '//matthewb.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </aside>
+    </div>
+
+
+        <script type="text/javascript" src="../assets/js/main.js?v=c2b76ed99e"></script>
+
+        <script id="dsq-count-scr" src="https://matthewb.disqus.com/count.js" async></script>
+        
+</body>

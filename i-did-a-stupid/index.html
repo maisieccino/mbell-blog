@@ -1,0 +1,201 @@
+
+    <head>
+        <title>I Did A Stupid.</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/main.css?v=c2b76ed99e">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <title>I Did A Stupid.</title>
+        <link rel="canonical" href="index.html">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Matt's Stuff">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="I Did A Stupid.">
+    <meta property="og:description" content="Sometimes you gotta break a few omelettes to make an egg. Wait, what?">
+    <meta property="og:url" content="https://blog.mbell.me/i-did-a-stupid/">
+    <meta property="og:image" content="https://blog.mbell.me/content/images/2016/03/2016-02-23_011744_scrot.png">
+    <meta property="article:published_time" content="2016-03-07T10:04:04.131Z">
+    <meta property="article:modified_time" content="2016-03-07T10:04:04.129Z">
+    <meta property="article:tag" content="web dev">
+    <meta property="article:tag" content="node.js">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="I Did A Stupid.">
+    <meta name="twitter:description" content="Sometimes you gotta break a few omelettes to make an egg. Wait, what?">
+    <meta name="twitter:url" content="https://blog.mbell.me/i-did-a-stupid/">
+    <meta name="twitter:image:src" content="https://blog.mbell.me/content/images/2016/03/2016-02-23_011744_scrot.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Matthew Bell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="web dev, node.js">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Matt&#x27;s Stuff",
+        "logo": "https://blog.mbell.me/content/images/2016/03/face.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Matthew Bell",
+        "image": "https://blog.mbell.me/content/images/2016/06/irlface.png",
+        "url": "https://blog.mbell.me/author/matthew/",
+        "sameAs": [],
+        "description": "Hey there, I&#x27;m Matt."
+    },
+    "headline": "I Did A Stupid.",
+    "url": "https://blog.mbell.me/i-did-a-stupid/",
+    "datePublished": "2016-03-07T10:04:04.131Z",
+    "dateModified": "2016-03-07T10:04:04.129Z",
+    "image": "https://blog.mbell.me/content/images/2016/03/2016-02-23_011744_scrot.png",
+    "keywords": "web dev, node.js",
+    "description": "Sometimes you gotta break a few omelettes to make an egg. Wait, what?"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.8">
+    <link rel="alternate" type="application/rss+xml" title="Matt's Stuff" href="../rss/index.html">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78122351-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </head>
+    <body>
+        <div id="menu-button"><i class="fa fa-navicon"></i></div>
+<nav>
+        <a href="../">Home</a>
+        <a href="../ghost">Dashboard</a>
+        <a href="https://mbell.me/">Back to homepage</a>
+</nav>
+
+
+            <header class="post-header" data-img="/content/images/2016/03/2016-02-23_011744_scrot.png">
+        <div><h1>I Did A Stupid.</h1></div>
+        <div><h2>Posted on <time class="post-date" datetime="2016-03-07">
+                07 March 2016
+                </time></h2></div>
+        <div><h2><i class="fa fa-comments"></i> <a href="index.html#disqus_thread"> Comments</a></h2></div>
+    </header>
+
+    <div id="main">
+        <section class="post-content">
+            <p>So last night, you may or may not have noticed that <a href="https://mbell.me/">mbell.me</a> and <a href="../">blog.mbell.me</a> were unavailable and couldn't be reached. Why? Well, I did a bad.</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hey, y'all. mbell.me is currently down due to a server problem (the problem being me)</p>— Matt (@mbell_gb) <a href="https://twitter.com/mbell_gb/status/706653817002139648">March 7, 2016</a></blockquote>  
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>So, what went wrong? I was in the middle of a routine upgrade of Ghost, the blogging platform I use. I needed to move the new server files to my 'live', or <code>www</code> folder as I know it. So far, so good. But then I start running into problems. Missing npm dependencies were found, which is odd considering that literally nothing has changed on my setup. But anyway, I carry on through and get round to cleaning up the upgrade files. I needed to chown the ghost directory to my app user, but instead, I fat-fingered it and instead of typing:</p>
+
+<pre><code># chown -R ./ ghost:ghost
+</code></pre>
+
+<p>I typed:</p>
+
+<pre><code># chown -R / ghost:ghost
+</code></pre>
+
+<p>Bad stuff happened. <code>sudo</code> no longer worked. In fact, not a lot of things were still working. My homepage was still up through, graced by the fact that it doesn't need to be modified once online. So I had to take the decision of restarting the virtual machine from scratch. Luckily, I had a mid-February backup, so most of the blog is back -- save for the images.</p>
+
+<h1 id="howtosaveyourserverfromyou">How to save your server from you</h1>
+
+<p>It's no secret that server management and backend operations are the stuff of hatred for most people working with the web. But honestly, by learning now you'll be exploring how to avoid doing stupid things on your server (like chowning the root directory). Below are a couple of tips I'd like to share, as well as links to some great resources.</p>
+
+<p><strong>Each app has its own user.</strong></p>
+
+<p>When creating a new webapp on your server, you should really create a new system user dedicated for <strong>just</strong> that app. It means that you can allow someone (who is trusted) to access that app with SSH key entry without having access to the rest of your server. It also means that if that app were to become compromised for whatever reason, the damage can be mitigated and not be extended to, say, your home page.</p>
+
+<p><strong>Use bare Git repositories rather than making a repository in your web directory.</strong></p>
+
+<p>Seeing as this is the production server, you need to use a bare Git repository rather than your standard working Git repository, because you are not going to work directly on the server. A lot of people have explained the difference of what bare repositories are, I'll link them at the end.</p>
+
+<p><strong>Use nvm to control your node.js versions.</strong></p>
+
+<p><code>nvm</code> is the Node.js Version Manager; it's an unofficial tool that lets you explicitly choose a version of Node.js to use. I think very highly of it, as it means that you're not going to have as many problems of "x not supported in version y" or whatever. It's also installed per-user as well, so no sudo access is required for installing node or for installing global npm packages.</p>
+
+<h2 id="linksandstuff">Links and stuff</h2>
+
+<p><a href="http://www.gitguys.com/topics/shared-repositories-should-be-bare-repositories/">Gitguys - Shared Repositories Should Be Bare Repositories</a></p>
+
+<p><a href="http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">Jon Saints - What is a bare Git repository?</a></p>
+
+<p><a href="https://www.digitalocean.com/community/tutorials">DigitalOcean Tutorials</a></p>
+        </section>
+        <section>
+            <div class="flex-container">
+                <div class="halfsies">
+                        <h2><i class="fa fa-user"></i> By <a href="../author/matthew/">Matthew Bell</a></h2>
+                        <p>Hey there, I'm Matt.</p>
+                </div>
+                <div class="halfsies">
+                    <h2><i class="fa fa-share-alt"></i> Share</h2>
+                    <p><i class="fa fa-twitter"></i> <a href="https://twitter.com/intent/tweet?text=I%20Did%20A%20Stupid.&amp;url=https://blog.mbell.me/i-did-a-stupid/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"> Twitter</a></p>
+                    <p><i class="fa fa-facebook"></i> <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.mbell.me/i-did-a-stupid/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">Facebook</a></p>
+                    <p><i class="fa fa-link"></i> <a href="index.html">Permalink</a></p>
+                </div>
+            </div>
+            <div class="tagbox">
+                    <h2><i class="fa fa-tags"></i> Tags: </h2>
+                    <span>
+                            <a class="button" href="../tag/web-dev/"><i class="fa fa-tag"></i> web dev</a>
+                            <a class="button" href="../tag/node-js/"><i class="fa fa-tag"></i> node.js</a>
+                    </span>
+            </div>
+        </section>
+        <aside class="flex-container">
+                <div class="halfsies">
+                    <h4>Up next:</h4>
+                    <h2><a href="../that-npm-situation/">That NPM Situation</a></h2>
+                    <p><em></em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+                <div class="halfsies">
+                    <h4>Previously:</h4>
+                    <h2><a href="../hacklondon-the-bestest-hackathon-in-the-bestest-city/">HackLondon, The Bestest Hackathon In The Bestest City?</a></h2>
+                    <p><em>HackLondon was a pure example of how to do a hackathon right. Thanks you guys!</em></p>
+                    <p>By <a href="../author/matthew/">Matthew Bell</a></p>
+                </div>
+        </aside>
+        <aside>
+            <h4>Comments</h4>
+            <div id="disqus_thread"></div>
+            <script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+ */
+            var disqus_config = function () {
+                this.page.url = ""; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = "23"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+
+    s.src = '//matthewb.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </aside>
+    </div>
+
+
+        <script type="text/javascript" src="../assets/js/main.js?v=c2b76ed99e"></script>
+
+        <script id="dsq-count-scr" src="https://matthewb.disqus.com/count.js" async></script>
+        
+</body>
